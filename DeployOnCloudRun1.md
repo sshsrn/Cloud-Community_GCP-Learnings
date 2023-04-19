@@ -1,5 +1,7 @@
 ## Deploying a project with Cloud Run
 
+### In this article, we will learn how to deploy a simple HTML project on the cloud run.
+
 * First, upload the project to the google cloud by clicking on the upload button in the drop down menu of the cloud shell.
 ![upload](assets/1.png)
 * Then, click on upload folder and select the project folder from your local machine.<br>
