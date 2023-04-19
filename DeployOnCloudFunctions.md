@@ -19,3 +19,5 @@ curl -X POST https://api.telegram.org/bot<token>/setWebhook?url=<url>
 ```
 * In the above request, `<token>` is the token of the telegram bot and `<url>` is the url of the cloud function.
 * Now, the bot is available to the public!🥳
+![cloud-build-demo](assets/27.png)
+* You can check out the telegram bot [here](https://t.me/telegptv1_bot).
