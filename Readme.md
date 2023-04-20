@@ -1,6 +1,6 @@
 # Cloud-Community GCP Learnings
 
-## This is a collection of learnings from the Cloud-Community GCP learning and hands-on sessions.
+## This is a collection of learnings from the Cloud-Community GCP sessions.
 
 ### [Deploying a HTML project with Cloud Run](DeployOnCloudRun1.md)
 ### [Deploying a complex project with Cloud Run](DeployOnCloudRun2.md)
