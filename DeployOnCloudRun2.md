@@ -9,7 +9,7 @@
 * Once it is uploaded, you can confirm whether the upload was successful, by using the ls command in the cloud shell.<br>
 ![upload-success](assets/13.png)
 ![ls](assets/14.png)
-* The next step is to create a docker image of the uploaded project. But in our case, since we have a separate frontend and backend. So, we need to create two docker images, one for the frontend and one for the backend.
+* The next step is to create a docker image of the uploaded project. But in our case, since we have a separate frontend and backend. So, we need to create two docker images, one for the frontend and one for the backend.<br>
 (Docker images- are a way of packaging up all the code and dependencies needed to run an application so that it can be easily deployed on any machine, without having to worry about differences in software versions or configurations.)
 For creating two docker images, we need to create two Dockerfiles, each for the frontend and backend in the respective folders and there should also be a `docker-compose.yaml` file in the root directory of the project to run both the docker images simultaneously. In our case, the docker-compose.yaml file contains the following code:
 ```yaml
