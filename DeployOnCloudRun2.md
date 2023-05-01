@@ -2,14 +2,16 @@
 
 ### In this article, we will learn how to containerize a project containing a separate frontend and backend using Docker, deploy it on the cloud run and also set up the CI/CD pipeline using GitHub Actions.
 
-* First, upload the project to the google cloud by clicking on the upload button in the drop down menu of the cloud shell.
+* Open the GCP platform, and the cloud shell. Now, upload your project from local machine to the google cloud by clicking on the upload button, which is in the drop down menu of the cloud shell.
 ![upload](assets/1.png)
-* Then, click on upload folder and select the project folder from your local machine.<br>
+* Then, click on upload folder and select the project folder from your local machine which you wish to deploy on google cloud.<br>
 ![upload](assets/2.png)
-* Once uploaded, confirm the same by using the ls command in the cloud shell.<br>
+* Once it is uploaded, you can confirm whether the upload was successful, by using the ls command in the cloud shell.<br>
 ![upload-success](assets/13.png)
 ![ls](assets/14.png)
-* Now, we need to create a docker image of the project. But in our case, we have a separate frontend and backend. So, we need to create two docker images, one for the frontend and one for the backend. For this, we need to create two Dockerfiles, each for the frontend and backend in the respective folders and there should be a `docker-compose.yaml` file in the root directory of the project to run both the docker images simultaneously. In our case, the docker-compose.yaml file contains the following code:
+* The next step is to create a docker image of the uploaded project. But in our case, since we have a separate frontend and backend. So, we need to create two docker images, one for the frontend and one for the backend.
+(Docker images- are a way of packaging up all the code and dependencies needed to run an application so that it can be easily deployed on any machine, without having to worry about differences in software versions or configurations.)
+For creating two docker images, we need to create two Dockerfiles, each for the frontend and backend in the respective folders and there should also be a `docker-compose.yaml` file in the root directory of the project to run both the docker images simultaneously. In our case, the docker-compose.yaml file contains the following code:
 ```yaml
 # This file is used to define multiple containers that work together as part of this application
 
@@ -40,7 +42,7 @@ ENV NODE_ENV development
 # Setting up the work directory (a new directory will be created)
 WORKDIR /app
 
-# Installing dependencies
+# Installing required dependencies
 COPY ./package.json /app
 RUN npm install
 
@@ -53,7 +55,7 @@ EXPOSE 3000
 # Starting our application
 CMD npm start
 ```
-* Now, to create the docker image for the backend, create a Dockerfile in the backend folder. As the backend is a Node.js application, the Dockerfile contains the following code:
+* Now, to create the docker image for the backend, create a Dockerfile in the backend folder. Similar steps as the frontend will be followed here. As the backend is a Node.js application, the Dockerfile contains the following code:
 ```Dockerfile
 # Fetching the latest node image on alpine linux
 FROM node:alpine AS development
@@ -77,7 +79,7 @@ EXPOSE 3001
 # Starting our application
 CMD node index.js
 ```
-* Now, to build the docker image for both the frontend and backend, run the following command:
+* Next step is to build the docker image for both the frontend and backend. For this, run the following command:
 ```bash
 docker-compose build
 ```
@@ -88,7 +90,9 @@ On executing the above command, the docker images for both the frontend and back
 docker images
 ```
 ![docker-images](assets/16.png)
-* Now, we need to deploy it on the cloud run to make the project available to the public. For this, first we should push the docker image to the google cloud container registry. For this, run the following commands:
+* Now, we need to deploy it on the cloud run to make the project available to the public. For this, first we should push the docker image to the google cloud container registry.
+* Container Registry- is a private container image registry that allows you to store, manage, and deploy Docker container images on Google Cloud Platform. Using Google Cloud Container Registry, we can easily push and pull Docker images to and from our registry, and use them to deploy our applications on various Google Cloud services.
+* For pushing the docker image to the container registry., run the following commands:
 ```bash
 docker tag ai-chatbot-frontend:latest gcr.io/PROJECT_ID/ai-chatbot-frontend:v1
 docker push gcr.io/PROJECT_ID/ai-chatbot-frontend:v1
