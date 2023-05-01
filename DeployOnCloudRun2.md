@@ -10,7 +10,7 @@
 ![upload-success](assets/13.png)
 ![ls](assets/14.png)
 * The next step is to create a docker image of the uploaded project. But in our case, since we have a separate frontend and backend. So, we need to create two docker images, one for the frontend and one for the backend.<br>
-(Docker images- are a way of packaging up all the code and dependencies needed to run an application so that it can be easily deployed on any machine, without having to worry about differences in software versions or configurations.)
+(**Docker images**- are a way of packaging up all the code and dependencies needed to run an application so that it can be easily deployed on any machine, without having to worry about differences in software versions or configurations.)<br>
 For creating two docker images, we need to create two Dockerfiles, each for the frontend and backend in the respective folders and there should also be a `docker-compose.yaml` file in the root directory of the project to run both the docker images simultaneously. In our case, the docker-compose.yaml file contains the following code:
 ```yaml
 # This file is used to define multiple containers that work together as part of this application
@@ -90,8 +90,8 @@ On executing the above command, the docker images for both the frontend and back
 docker images
 ```
 ![docker-images](assets/16.png)
-* Now, we need to deploy it on the cloud run to make the project available to the public. For this, first we should push the docker image to the google cloud container registry.
-* Container Registry- is a private container image registry that allows you to store, manage, and deploy Docker container images on Google Cloud Platform. Using Google Cloud Container Registry, we can easily push and pull Docker images to and from our registry, and use them to deploy our applications on various Google Cloud services.
+* Now, we need to deploy it on the cloud run to make the project available to the public. For this, first we should push the docker image to the google cloud container registry.<br>
+(**Container Registry**- is a private container image registry that allows you to store, manage, and deploy Docker container images on Google Cloud Platform. Using Google Cloud Container Registry, we can easily push and pull Docker images to and from our registry, and use them to deploy our applications on various Google Cloud services.) <br>
 * For pushing the docker image to the container registry., run the following commands:
 ```bash
 docker tag ai-chatbot-frontend:latest gcr.io/PROJECT_ID/ai-chatbot-frontend:v1
