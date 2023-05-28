@@ -2,6 +2,8 @@
 
 ### In this article, we will learn how to deploy a simple HTML project on the cloud run.
 
+Cloud Run - Cloud Run is a serverless compute platform offered by Google Cloud Platform (GCP). It allows you to run containerized applications without worrying about managing the underlying infrastructure. 
+
 * First, upload the project to the google cloud by clicking on the upload button in the drop down menu of the cloud shell.
 ![upload](assets/1.png)
 * Then, click on upload folder and select the project folder from your local machine.<br>
@@ -45,7 +47,9 @@ docker run -p 8080:80 movies_search:v1
 In the above command, -p is used to map the port 8080 of the local machine to the port 80 of the docker container. movies_search is the name of the project and v1 is the version of the project.
 The above command will run the docker image in the port 8080 of the google cloud shell. To access the project, go to the web preview option in the drop down menu of the cloud shell and click on the port 8080.
 ![docker-run](assets/7.png)
-* Now, the project is running in the cloud shell, but to make it available to the public, we need to deploy it on the cloud run. For this, first we should push the docker image to the google cloud container registry. For this, run the following commands:
+* Now, the project is running in the cloud shell, but to make it available to the public, we need to deploy it on the cloud run. For this, first we should push the docker image to the google cloud container registry. 
+Google Cloud Container Registry: Google Cloud Container Registry is a managed, private container image registry provided by Google Cloud Platform (GCP). It allows you to store, manage, and deploy your container images securely. 
+For this, run the following commands:
 ```bash
 docker tag movies_search:v1 gcr.io/PROJECT_ID/movies_search:v1
 docker push gcr.io/PROJECT_ID/movies_search:v1
